@@ -1,17 +1,17 @@
-let imagen = $("#img-1");
-let nombre = $("#nombre");
-let transformacion = $("#transformacion");
-let raza = $("#raza");
-let comparacion = $("#comparacion");
-let pierde = '<i class="fa-solid fa-angle-left" style="font-size: 7rem;"></i>';
-let gana = '<i class="fa-solid fa-angle-right" style="font-size: 7rem;"></i>';
-let def = '<i class="fa-solid" style="font-size: 5.3rem;"></i>';
-let personaje = $("#nombre-p1");
-let gokus = $("#gokus");
-let per_nombre = $("#per-nombre");
-let per_img = $("#per-img");
+const imagen = $("#img-1");
+const nombre = $("#nombre");
+const transformacion = $("#transformacion");
+const raza = $("#raza");
+const comparacion = $("#comparacion");
+const pierde = '<i class="fa-solid fa-angle-left" style="font-size: 7rem;"></i>';
+const gana = '<i class="fa-solid fa-angle-right" style="font-size: 7rem;"></i>';
+const def = '<i class="fa-solid" style="font-size: 5.3rem;"></i>';
+const personaje = $("#nombre-p1");
+const gokus = $("#gokus");
+const per_nombre = $("#per-nombre");
+const per_img = $("#per-img");
 
-nombre.change(() => {
+nombre.on("change", () => {
 	let opc = "<option>Seleccione...</option>";
 
 	if (nombre.val() == "goku") {
@@ -139,7 +139,7 @@ nombre.change(() => {
 	transformacion.html(opc);
 });
 
-transformacion.change(() => {
+transformacion.on("change", () => {
 	let tipo = $("#transformacion option:selected").text();
 	let nom = $("#nombre option:selected").text();
 	if (tipo == "Normal") {
