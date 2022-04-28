@@ -46,6 +46,7 @@ self.addEventListener("install", (e) => {
 			"/Los-Gokus/css/style.css",
 			"/Los-Gokus/js/app.js",
 			"/Los-Gokus/js/script.js",
+			"/Los-Gokus/res/pages/descripciones.html",
 		]);
 	});
 	//cache inmutable no se modifica
@@ -59,13 +60,12 @@ self.addEventListener("install", (e) => {
 			"/Los-Gokus/res/pages/404.html",
 			"/Los-Gokus/res/404.png",
 			"/Los-Gokus/images/favicons/favicon.png",
-			"/Los-Gokus/manifest.json"
+			"/Los-Gokus/manifest.json",
 		]);
 	});
 	e.waitUntil(Promise.all([cacheProm, cacheInm]));
 	self.skipWaiting();
 });
-
 
 self.addEventListener("fetch", (e) => {
 	//Network with cache fallback
@@ -85,7 +85,7 @@ self.addEventListener("fetch", (e) => {
 						}
 						return newRes;
 					});
-			
+
 			caches.match(e.request).then((cacheRes) => {
 				if (!cacheRes) {
 					caches.open(CacheDinamico).then((cache) => {
@@ -104,7 +104,7 @@ self.addEventListener("fetch", (e) => {
 				.then((newRes) => {
 					if (!newRes) {
 						if (/\.(png|jpg|webp|jfif)$/.test(e.request.url)) {
-							console.log("Error de imagen: "+e.request.url);
+							console.log("Error de imagen: " + e.request.url);
 							return caches.match("/Los-Gokus/res/404.png");
 						}
 						return caches.match("/Los-Gokus/res/pages/404.html");
