@@ -15,51 +15,51 @@ function LimpiarCache(cacheName, numeroItems) {
 self.addEventListener("install", (e) => {
 	const cacheProm = caches.open(CacheEstatico).then((cache) => {
 		cache.addAll([
-			"images/camara.png",
-			"images/androide.webp",
-			"images/goku_1.webp",
-			"images/goku_2.jpg",
-			"images/goku_3.webp",
-			"images/goku_4.jpg",
-			"images/goku_5.jpg",
-			"images/goku_6.jfif",
-			"images/vegeta_1.jfif",
-			"images/vegeta_2.webp",
-			"images/vegeta_3.webp",
-			"images/vegeta_4.jpg",
-			"images/krillin.jpg",
-			"images/trunks.jpg",
-			"images/piccolo_1.jpg",
-			"images/piccolo_2.jpg",
-			"images/piccolo_3.jfif",
-			"images/piccolo_4.jpg",
-			"images/dende.jpg",
-			"images/boo_1.jpg",
-			"images/boo_2.jpg",
-			"images/boo_3.jpg",
-			"images/boo_4.jpg",
-			"images/black_1.jfif",
-			"images/black_2.webp",
-			"images/shin.webp",
-			"/",
-			"/index.html",
-			"/css/style.css",
-			"/js/app.js",
-			"/js/script.js",
+			"/Los-Gokus/images/camara.png",
+			"/Los-Gokus/images/androide.webp",
+			"/Los-Gokus/images/goku_1.webp",
+			"/Los-Gokus/images/goku_2.jpg",
+			"/Los-Gokus/images/goku_3.webp",
+			"/Los-Gokus/images/goku_4.jpg",
+			"/Los-Gokus/images/goku_5.jpg",
+			"/Los-Gokus/images/goku_6.jfif",
+			"/Los-Gokus/images/vegeta_1.jfif",
+			"/Los-Gokus/images/vegeta_2.webp",
+			"/Los-Gokus/images/vegeta_3.webp",
+			"/Los-Gokus/images/vegeta_4.jpg",
+			"/Los-Gokus/images/krillin.jpg",
+			"/Los-Gokus/images/trunks.jpg",
+			"/Los-Gokus/images/piccolo_1.jpg",
+			"/Los-Gokus/images/piccolo_2.jpg",
+			"/Los-Gokus/images/piccolo_3.jfif",
+			"/Los-Gokus/images/piccolo_4.jpg",
+			"/Los-Gokus/images/dende.jpg",
+			"/Los-Gokus/images/boo_1.jpg",
+			"/Los-Gokus/images/boo_2.jpg",
+			"/Los-Gokus/images/boo_3.jpg",
+			"/Los-Gokus/images/boo_4.jpg",
+			"/Los-Gokus/images/black_1.jfif",
+			"/Los-Gokus/images/black_2.webp",
+			"/Los-Gokus/images/shin.webp",
+			"/Los-Gokus/",
+			"/Los-Gokus/index.html",
+			"/Los-Gokus/css/style.css",
+			"/Los-Gokus/js/app.js",
+			"/Los-Gokus/js/script.js",
 		]);
 	});
 	//cache inmutable no se modifica
 	const cacheInm = caches.open(CacheInmutable).then((cache) => {
 		cache.addAll([
-			"/css/bootstrap.min.css",
-			"/css/fontawesome.min.css",
-			"/js/bootstrap.bundle.min.js",
-			"/js/jquery.min.js",
-			"/js/fontawesome.min.js",
-			"/res/pages/404.html",
-			"/res/404.png",
-			"/images/favicons/favicon.png",
-			"/manifest.json"
+			"/Los-Gokus/css/bootstrap.min.css",
+			"/Los-Gokus/css/fontawesome.min.css",
+			"/Los-Gokus/js/bootstrap.bundle.min.js",
+			"/Los-Gokus/js/jquery.min.js",
+			"/Los-Gokus/js/fontawesome.min.js",
+			"/Los-Gokus/res/pages/404.html",
+			"/Los-Gokus/res/404.png",
+			"/Los-Gokus/images/favicons/favicon.png",
+			"/Los-Gokus/manifest.json"
 		]);
 	});
 	e.waitUntil(Promise.all([cacheProm, cacheInm]));
@@ -79,9 +79,9 @@ self.addEventListener("fetch", (e) => {
 					.then((newRes) => {
 						if (!newRes) {
 							if (/\.(png|jpg|webp|jfif)$/.test(e.request.url)) {
-								return caches.match("/res/404.png");
+								return caches.match("/Los-Gokus/res/404.png");
 							}
-							return caches.match("/res/pages/404.html");
+							return caches.match("/Los-Gokus/res/pages/404.html");
 						}
 						return newRes;
 					});
@@ -105,9 +105,9 @@ self.addEventListener("fetch", (e) => {
 					if (!newRes) {
 						if (/\.(png|jpg|webp|jfif)$/.test(e.request.url)) {
 							console.log("Error de imagen: "+e.request.url);
-							return caches.match("/res/404.png");
+							return caches.match("/Los-Gokus/res/404.png");
 						}
-						return caches.match("/res/pages/404.html");
+						return caches.match("/Los-Gokus/res/pages/404.html");
 					}
 					return newRes;
 				});
